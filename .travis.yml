@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+- 2.4.0
+env:
+  matrix:
+  - DB=postgresql
+script:
+- RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+- bundle exec rspec
+before_script:
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: SMeTMSTrSubysNUDDBJZglItWJqRdDijvdxO5TaRssu0WSbGV3gbUnpJBi1lmvQsBzki0z+HbKyI34CXzVTK5nhByhZ8/Mfo+5I9M6lXhBOZaewmwzcNANGd1QZFmYTSGnrBbZrmjyc8HzGzh3nZ9YmLA98JaujAvGnRMeG73v8ig3sYIb/D13urRf7SYXidkZfcJQXJTIZw7jRwUATzkLzLQTGEyML/LHNaLeMe0SyPh++UK7TMo6oJPlWuE8A6yriMVCqtv3U0bPaXpp9mQWubq+Qtogfd+hAGRymOFtg1yMENAAG1LOnnRmuc/ZUQouio9F7GfySxohCLQCAMF9mI0cuVi3QohaGqSAhxQOrwECmo91g994xGQvHu8IfwzgWJoylhWryXysb7EGzoF8jMQFPyKyTyyJt1fe+srvOgSDKjlSRyLCjSZ9M9UdeMhHl3U9zT+CBpwYD10BLz0XnpOJMj3EJD9GbE6yKPdO/ItxcsPGyRlGibRqY+8hIihYdjl/ERtm/sIixMtUYjHT3DIxfSOaNUSYoHAfIo59p9SNv6dKB82/G0EPtByFPBSSrz9Vi6Hr8w4454FfJykuaXojM8UnC6aSv8ocZ719SlYfWWHxxnaS7bBZiGAmvQnq3i1uNMqC+SOS0l2/88ld/jy/WOLitm0URN4gWELuw=
+  app: small-blind
+  run: "rake db:migrate"
+  on:
+    repo: notmarkmiranda/nine
