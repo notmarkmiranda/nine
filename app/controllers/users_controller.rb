@@ -3,9 +3,11 @@ class UsersController < ApplicationController
   before_action :redirect_user, only: [:new, :create]
 
   def show
+    @user = current_user
   end
 
   def new
+    @user = User.new
   end
 
   def create
@@ -19,11 +21,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = current_user
   end
 
   def update
-    @user = User.find(session[:user_id])
+    @user = current_user
     if @user.update(user_params)
       redirect_to dashboard_path
     else
