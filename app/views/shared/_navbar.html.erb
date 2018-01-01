@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="twelve columns">
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li class="navbar-brand">
+          <%= link_to root_path, class: 'navbar-link brand' do %>
+            Poker<span>Rank</span>
+          <% end %>
+        </li>
+        <% if current_user %>
+        <li class="navbar-item">
+          <%= link_to 'Sign Out', sign_out_path, class: 'navbar-link' %>
+        </li>
+        <li class="navbar-item">
+          <%= link_to 'Dashboard', dashboard_path, class: 'navbar-link' %>
+        </li>
+        <% else %>
+        <li class="navbar-item">
+          <%= link_to 'Sign In', sign_in_path, class: 'navbar-link' %>
+        </li>
+        <li class="navbar-item">
+          <%= link_to 'Sign Up', sign_up_path, class: 'navbar-link' %>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</div>
+
