@@ -10,10 +10,10 @@ describe UsersController, type: :controller do
       expect(response).to render_template :show
     end
 
-    xit 'redirects to sign in path - visitor' do
+    it 'redirects to sign in path - visitor' do
       get :show
 
-      expect(response).to redirect_to dashboard_path
+      expect(response).to redirect_to sign_in_path
     end
   end
 
@@ -54,7 +54,11 @@ describe UsersController, type: :controller do
       expect(response).to render_template :edit
     end
 
-    it 'redirects to sign in path - visitor'
+    it 'redirects to sign in path - visitor' do
+      get :edit
+
+      expect(response).to redirect_to sign_in_path
+    end
   end
 
   context 'patch#update' do
