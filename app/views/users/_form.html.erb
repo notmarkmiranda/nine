@@ -1,11 +1,29 @@
-<%= form_for @user, url: form_path do |f| %>
-  <%= f.label :email, 'Email Address' %>
-  <%= f.text_field :email %>
-  <%= f.label :first_name, 'First Name' %>
-  <%= f.text_field :first_name %>
-  <%= f.label :last_name, 'Last Name' %>
-  <%= f.text_field :last_name %>
-  <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
-  <%= f.submit button_text %>
-<% end%>
+<div class="row">
+  <div class="one-third column offset-by-one-third">
+  <%= form_for @user, url: form_path do |f| %>
+    <div class="row">
+      <div class="twelve columns">
+        <%= f.label :email, 'Email Address' %>
+        <%= f.text_field :email, class: 'u-full-width', autofocus: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        <%= f.label :first_name, 'First Name' %>
+        <%= f.text_field :first_name, class: 'u-full-width' %>
+      </div>
+      <div class="six columns">
+        <%= f.label :last_name, 'Last Name' %>
+        <%= f.text_field :last_name, class: 'u-full-width' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <%= f.label :password, 'Password' %>
+        <%= f.password_field :password, class: 'u-full-width' %>
+      </div>
+    </div>
+    <%= f.submit button_text, class: 'button-primary' %>
+  <% end%>
+  </div>
+</div>

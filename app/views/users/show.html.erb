@@ -1,1 +1,10 @@
-<%= @user.email %>
+<div class="row">
+  <div class="four columns">
+    <h3>DASHBOARD</h3>
+    <p class="dashboard__user-email"><%= @user.email %></p>
+  </div>
+  <div class="eight columns dashboard__edit-profile-button">
+    <%= link_to 'Edit Profile', edit_profile_path, class: 'button button-primary' %>
+  </div>
+</div>
+
