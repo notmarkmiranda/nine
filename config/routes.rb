@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
+  resources :leagues, except: [:destroy], param: :slug
+
   get  '/sign-in', to: 'sessions#new', as: 'sign_in'
   post '/sign-in', to: 'sessions#create'
   get  '/sign-out', to: 'sessions#destroy', as: 'sign_out'

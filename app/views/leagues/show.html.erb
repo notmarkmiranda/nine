@@ -1,0 +1,48 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <h2><%= @league.name %></h2>
+    <p class="league-show__privated-slogan">
+      <%= @league.privated_slogan %> -
+      <%= link_to 'Edit League', edit_league_path(@league), class: 'button league-show__edit-button' %>
+    </p>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card league__seasons">
+          <h4 class="card-header">
+            Seasons
+          </h4>
+          <div class="card-body">
+            <h5 class="card-title">Current</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+          </div>
+          <hr />
+          <div class="card-body">
+            <h5 class="card-title">Completed & Scheduled</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card league__games">
+          <h4 class="card-header">
+            Games
+          </h4>
+          <div class="card-body">
+            <h5 class="card-title">Current & Scheduled</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+          </div>
+          <hr />
+          <div class="card-body">
+            <h5 class="card-title">Completed</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
