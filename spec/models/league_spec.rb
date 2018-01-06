@@ -37,6 +37,7 @@ describe League, type: :model do
         end
       end
     end
+    it { should have_many :seasons }
   end
 
   context 'validations' do

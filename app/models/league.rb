@@ -10,6 +10,7 @@ class League < ApplicationRecord
       where('user_league_roles.role = ?', 0)
     end
   end
+  has_many :seasons
 
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true
