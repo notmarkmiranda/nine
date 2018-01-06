@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @leagues = [@user.admin_leagues, @user.member_leagues]
   end
 
   def new

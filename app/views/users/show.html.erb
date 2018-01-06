@@ -1,10 +1,40 @@
-<div class="row">
-  <div class="four columns">
-    <h3>DASHBOARD</h3>
+<div class="row justify-content-md-center">
+  <div class="col-md-12">
+    <h2>DASHBOARD</h2>
     <p class="dashboard__user-email"><%= @user.email %></p>
-  </div>
-  <div class="eight columns dashboard__edit-profile-button">
-    <%= link_to 'Edit Profile', edit_profile_path, class: 'button button-primary' %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card dashboard__league-card">
+          <h4 class="card-header">
+            Leagues
+          </h4>
+          <div class="card-body">
+            <h5 class="card-title">Admin Leagues</h5>
+            <% @leagues[0].each do |a_league| %>
+              <p class="card-text"><%= a_league.name %></p>
+            <% end %>
+          </div>
+          <hr />
+          <div class="card-body">
+            <h5 class="card-title">Member Leagues</h5>
+            <% @leagues[1].each do |m_league| %>
+              <p class="card-text"><%= m_league.name %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card dashboard__game-card">
+          <h4 class="card-header">
+            Games
+          </h4>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
