@@ -35,6 +35,7 @@ describe User, type: :model do
         end
       end
     end
+    it { should have_many :non_league_games }
   end
 
   context 'validations' do
