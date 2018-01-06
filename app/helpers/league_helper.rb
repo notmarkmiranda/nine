@@ -3,8 +3,17 @@ module LeagueHelper
     league
   end
 
+  def load_season
+    league
+    season
+  end
+
   def league
     @league ||= League.find_by(slug: league_param)
+  end
+
+  def season
+    @season ||= Season.find(season_param)
   end
 
   def verify_admin_for_league
@@ -13,12 +22,19 @@ module LeagueHelper
   end
 
   def verify_part_of_league
-    redirect_to dashboard_path if league.privated? && (current_user && !league.users.include?(current_user))
+    if league.privated?
+      return redirect_to sign_in_path if current_user.nil?
+      redirect_to dashboard_path if !league.users.include?(current_user)
+    end
   end
 
   private
 
   def league_param
     controller_name == 'leagues' ? params[:slug] : params[:league_slug]
+  end
+
+  def season_param
+    controller_name == 'seasons' ? params[:id] : params[:season_id]
   end
 end

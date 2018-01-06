@@ -18,6 +18,7 @@ class League < ApplicationRecord
 
   before_validation :set_slug
   after_create :create_admin_ulr
+  after_create :create_initial_season
 
   def admins
     users.admins
@@ -51,6 +52,10 @@ class League < ApplicationRecord
 
   def create_admin_ulr
     user_league_roles.create!(user: creator, role: 1)
+  end
+
+  def create_initial_season
+    seasons.create!
   end
 
   def set_slug
