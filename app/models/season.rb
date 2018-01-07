@@ -6,6 +6,14 @@ class Season < ApplicationRecord
 
   before_create :deactivate_other_seasons
 
+  def activate!
+    update!(active: true)
+  end
+
+  def deactivate!
+    update!(active: false)
+  end
+
   private
 
   def deactivate_other_seasons
