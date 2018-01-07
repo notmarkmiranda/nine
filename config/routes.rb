@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       resource :deactivate, only: [:update]
       resource :complete, only: [:update]
       resource :uncomplete, only: [:update]
-      resources :games, except: [:destroy]
+      resources :games, except: [:destroy] do
+        resource :finalize, only: [:update]
+        resource :unfinalize, only: [:update]
+      end
     end
   end
 

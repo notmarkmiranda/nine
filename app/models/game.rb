@@ -4,4 +4,12 @@ class Game < ApplicationRecord
 
   validates :attendees, presence: true
   validates :buy_in, presence: true
+
+  def finalize!
+    update!(finalized: true)
+  end
+
+  def unfinalize!
+    update!(finalized: false)
+  end
 end
