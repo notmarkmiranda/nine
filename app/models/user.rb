@@ -13,6 +13,7 @@ class User < ApplicationRecord
       where('user_league_roles.role = ?', 1)
     end
   end
+  has_many :non_league_games, class_name: 'Game', foreign_key: :user_id
 
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true

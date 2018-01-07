@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  resources :leagues, except: [:destroy], param: :slug
+  resources :leagues, except: [:destroy], param: :slug do
+    resources :seasons, except: [:destroy] do
+      resource :activate, only: [:update]
+      resource :deactivate, only: [:update]
+      resource :complete, only: [:update]
+      resource :uncomplete, only: [:update]
+      resources :games, except: [:destroy] do
+        resource :finalize, only: [:update]
+        resource :unfinalize, only: [:update]
+      end
+    end
+  end
 
   get  '/sign-in', to: 'sessions#new', as: 'sign_in'
   post '/sign-in', to: 'sessions#create'

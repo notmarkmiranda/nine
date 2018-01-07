@@ -37,6 +37,7 @@ describe League, type: :model do
         end
       end
     end
+    it { should have_many :seasons }
   end
 
   context 'validations' do
@@ -85,6 +86,19 @@ describe League, type: :model do
 
       it 'returns false' do
         expect(league.part_of_league?(user1)).to be false
+      end
+    end
+
+    context '#privated_slogan' do
+      let(:public_league)  { create(:league, :public) }
+      let(:private_league) { create(:league, :private) }
+
+      it 'returns private' do
+        expect(private_league.privated_slogan).to eq('Private League')
+      end
+
+      it 'returns public' do
+        expect(public_league.privated_slogan).to eq('Public League')
       end
     end
   end
