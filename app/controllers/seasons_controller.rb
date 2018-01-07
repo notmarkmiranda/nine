@@ -7,6 +7,7 @@ class SeasonsController < ApplicationController
   before_action :verify_part_of_league, only: [:show]
 
   def show
+    @games = season.games
   end
 
   def create
