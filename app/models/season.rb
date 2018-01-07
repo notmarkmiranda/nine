@@ -10,8 +10,16 @@ class Season < ApplicationRecord
     update!(active: true)
   end
 
+  def complete!
+    update!(completed: true)
+  end
+
   def deactivate!
     update!(active: false)
+  end
+
+  def uncomplete!
+    update!(completed: false)
   end
 
   private

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :seasons, except: [:destroy] do
       resource :activate, only: [:update]
       resource :deactivate, only: [:update]
+      resource :complete, only: [:update]
+      resource :uncomplete, only: [:update]
       resources :games, except: [:destroy]
     end
   end

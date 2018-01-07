@@ -30,6 +30,24 @@ describe Season, type: :model do
       end
     end
 
+    context '#complete!' do
+      it 'changes complete from false to true' do
+        season.update(completed: false)
+
+        expect {
+          season.complete!
+        }.to change { season.reload.completed }.from(false).to(true)
+      end
+
+      it 'does not change from true' do
+        season.update(completed: true)
+
+        expect {
+          season.complete!
+        }.to_not change { season.reload.completed }.from(true)
+      end
+    end
+
     context '#deactivate!' do
       it 'changes from true to false' do
         season.update(active: true)
@@ -45,6 +63,24 @@ describe Season, type: :model do
         expect {
           season.deactivate!
         }.to_not change { season.reload.active }.from(false)
+      end
+    end
+
+    context '#uncomplete!' do
+      it 'changes complete from true to false' do
+        season.update(completed: true)
+
+        expect {
+          season.uncomplete!
+        }.to change { season.reload.completed }.from(true).to(false)
+      end
+
+      it 'does not change from false' do
+        season.update(completed: false)
+
+        expect {
+          season.uncomplete!
+        }.to_not change { season.reload.completed }.from(false)
       end
     end
   end
