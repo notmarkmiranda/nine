@@ -1,10 +1,2 @@
-<%= form_for [@league, @season, @game] do |f| %>
-  <%= f.label :date, 'Date' %>
-  <%= f.date_field :date %>
-  <%= f.label :buy_in, 'Buy In' %>
-  <%= f.text_field :buy_in %>
-  <%= f.label :attendees, 'Attendees' %>
-  <%= f.text_field :attendees %>
+<%= render partial: 'form', locals: { button_text: 'Schedule Game' } %>
 
-  <%= f.submit 'Schedule Game' %>
-<% end %>
