@@ -9,6 +9,10 @@ class Game < ApplicationRecord
     update!(finalized: true)
   end
 
+  def full_date
+    date.strftime('%B %-e, %Y')
+  end
+
   def unfinalize!
     update!(finalized: false)
   end

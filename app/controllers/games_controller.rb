@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.new
   end
 
   def create
@@ -35,6 +36,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:season_id, :user_id, :attendees, :buy_in, :privated)
+    params.require(:game).permit(:date, :season_id, :user_id, :attendees, :buy_in, :privated)
   end
 end
